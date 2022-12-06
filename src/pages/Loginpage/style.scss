@@ -1,0 +1,26 @@
+.Login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .rounded {
+    width: 500px;
+    height: 500px;
+    border-radius: 15px;
+    background-color: rgb(135, 203, 232);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    .title {
+      font-size: 26px;
+      font-family: sans-serif;
+      font-weight: bold;
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+    }
+  }
+}
