@@ -1,14 +1,14 @@
 import React from "react";
-import SettingsTable from "../../widgets/SettingsTable";
+import ReportTable from "../../widgets/ReportTable";
 import "./style.scss";
 
-const Settings = () => {
+const Report = () => {
   return (
     <div className="MainContainer">
       <div className="border"></div>
-      <SettingsTable />
+      <ReportTable />
     </div>
   );
 };
 
-export default Settings;
+export default Report;

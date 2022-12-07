@@ -29,9 +29,7 @@ const Sidebar = () => {
             alignItems: "center",
           }}
         >
-          <Link to={"/home"}>
-            <img src="/logo.png" alt="logo" className="logo" />
-          </Link>
+          <div className="logo">Elbeg LLC</div>
           {categories.map((dat) => (
             <Menu.Item eventKey={dat.key} key={dat.key} icon={dat.icon}>
               <Link to={dat.path}>{dat.label}</Link>

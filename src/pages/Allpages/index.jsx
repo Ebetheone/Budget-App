@@ -1,9 +1,13 @@
 import React from "react";
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
+import "./style.scss";
+
 import Homepage from "../Homepage";
 import Userpage from "../Userpage";
 import Sidebar from "../../Sidebar";
-import "./style.scss";
+import Settings from "../Settingspage";
+import Report from "../ Reportpage";
+
 function PrivateRoute() {
   if (!localStorage.getItem("token")) {
     return <Navigate to="/" state={{ from: history.location }} />;
@@ -19,6 +23,8 @@ const Allpages = () => {
         <Route exact path="" element={<PrivateRoute />}>
           <Route exact path="/home" element={<Homepage />} />
           <Route path="/user" element={<Userpage />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/report" element={<Report />} />
         </Route>
       </Routes>
     </div>

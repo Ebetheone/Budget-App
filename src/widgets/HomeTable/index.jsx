@@ -7,6 +7,7 @@ import "antd/dist/antd.css";
 const { Column } = Table;
 
 const TableActions = () => {
+  const [data, setData] = useState([]);
   return (
     <div>
       <div className="Border">
@@ -14,10 +15,11 @@ const TableActions = () => {
           <div className="title">Бүгд</div>
         </div>
         <div className="Table">
-          <Table>
+          <Table dataSource={data}>
             <Column title="Орлого" dataIndex="orlogo" key="orlogo" />
+            <Button>Орлого нэмэх</Button>
             <Column title="Зарлага" dataIndex="zarlaga" key="zarlaga" />
-            <Column title="Тайлан" dataIndex="tailan" key="tailan" />
+            <Button>Зарлага нэмэх</Button>
           </Table>
         </div>
       </div>

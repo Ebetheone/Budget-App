@@ -2,6 +2,7 @@ import {
   UserOutlined,
   CloudOutlined,
   SettingOutlined,
+  PaperClipOutlined,
 } from "@ant-design/icons";
 export const categories = [
   {
@@ -18,6 +19,12 @@ export const categories = [
   },
   {
     key: 3,
+    icon: <PaperClipOutlined />,
+    label: "REPORT",
+    path: "/report",
+  },
+  {
+    key: 4,
     icon: <SettingOutlined />,
     label: "SETTINGS",
     path: "/settings",
