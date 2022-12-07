@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import "./style.scss";
 import { Button, Form, Input, Space } from "antd";
-import "antd/dist/antd.css";
-import { useLogin } from "./useLogin";
 import { ScaleLoader } from "react-spinners";
+
+import { useLogin } from "./useLogin";
+
+import "./style.scss";
+import "antd/dist/antd.css";
 
 const Login = () => {
   const { login, loading, register } = useLogin();
@@ -51,18 +53,6 @@ const Login = () => {
                       type: "email",
                       required: true,
                       message: "Please input your email!",
-                    },
-                  ]}
-                >
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  label="Username"
-                  name="username"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your username!",
                     },
                   ]}
                 >
@@ -121,12 +111,13 @@ const Login = () => {
                 autoComplete="off"
               >
                 <Form.Item
-                  label="Username"
-                  name="username"
+                  name="email"
+                  label="Email"
                   rules={[
                     {
+                      type: "email",
                       required: true,
-                      message: "Please input your username!",
+                      message: "Please input your email!",
                     },
                   ]}
                 >

@@ -31,7 +31,13 @@ const AddUser = ({ setVisible, visible, loading, id }) => {
             />
           ) : (
             <>
-              <Form.Item name="username" label="Username">
+              <Form.Item name="email" label="Email">
+                <Input />
+              </Form.Item>
+              <Form.Item name="firstName" label="First Name">
+                <Input />
+              </Form.Item>
+              <Form.Item name="lastName" label="Last Name">
                 <Input />
               </Form.Item>
               <Form.Item name="password" label="Password" type="password">

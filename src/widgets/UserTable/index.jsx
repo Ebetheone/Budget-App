@@ -48,8 +48,10 @@ const UserTable = () => {
         </div>
         <div className="UserTable">
           <Table dataSource={data}>
-            <Column title="Username" dataIndex="username" key="Username" />
+            <Column title="Email" dataIndex="email" key="Email" />
             <Column title="Id" dataIndex="_id" key="id" />
+            <Column title="First Name" dataIndex="firstName" key="FirstName" />
+            <Column title="Last Name" dataIndex="lastName" key="LastName" />
             <Column
               title="Action"
               key="action"

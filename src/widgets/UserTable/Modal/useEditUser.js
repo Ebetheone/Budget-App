@@ -4,8 +4,16 @@ import axios from "../../../axios";
 export const useEditUser = () => {
   const [loading, setLoading] = useState(false);
   const addUser = useCallback((values) => {
-    if (!values.username) {
-      alert("username oruulna uu");
+    if (!values.email) {
+      alert("email oruulna uu");
+      return;
+    }
+    if (!values.firstName) {
+      alert("neree oruulna uu");
+      return;
+    }
+    if (!values.lastName) {
+      alert("ovgoo oruulna uu");
       return;
     }
     if (!values.password) {
@@ -15,7 +23,9 @@ export const useEditUser = () => {
     setLoading(true);
     axios
       .post("/auth/register", {
-        username: values.username,
+        email: values.email,
+        firstName: values.firstName,
+        lastName: values.lastName,
         password: values.password,
       })
       .then(({ data }) => {
@@ -31,12 +41,14 @@ export const useEditUser = () => {
       })
       .finally(() => setLoading(false));
   }, []);
-  
+
   const editUser = useCallback(async (values) => {
     console.log(values);
     await axios
       .post("/user/edit", {
         id: values._id,
+        firstName: values.firstName,
+        lastName: values.lastName,
         password: values.password,
       })
       .then(({ data }) => {

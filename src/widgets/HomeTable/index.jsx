@@ -2,7 +2,6 @@ import "./style.scss";
 import { Space, Table, Modal, Button } from "antd";
 import "antd/dist/antd.css";
 import React, { useState } from "react";
-import Data from "../../data/home.json";
 import AddUser from "./Modal/AddUser";
 import EditUser from "./Modal/EditUser";
 const { Column } = Table;

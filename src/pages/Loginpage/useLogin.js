@@ -7,8 +7,8 @@ export const useLogin = () => {
   const [loading, setLoading] = useState(false);
 
   const login = useCallback((values) => {
-    if (!values.username) {
-      alert("username oruulna uu");
+    if (!values.email) {
+      alert("email oruulna uu");
       return;
     }
     if (!values.password) {
@@ -18,7 +18,7 @@ export const useLogin = () => {
     setLoading(true);
     axios
       .post("/auth/login", {
-        username: values.username,
+        email: values.email,
         password: values.password,
       })
       .then(({ data }) => {
@@ -38,8 +38,8 @@ export const useLogin = () => {
   }, []);
 
   const register = useCallback((values) => {
-    if (!values.username) {
-      alert("username oruulna uu");
+    if (!values.email) {
+      alert("email oruulna uu");
       return;
     }
     if (!values.password) {
@@ -50,8 +50,10 @@ export const useLogin = () => {
 
     axios
       .post("/auth/register", {
-        username: values.username,
+        email: values.email,
         password: values.password,
+        firstName: values.firstName,
+        lastName: values.lastName,
       })
       .then(({ data }) => {
         if (data.success) {

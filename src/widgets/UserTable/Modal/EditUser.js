@@ -37,6 +37,12 @@ const EditUser = ({ setHandleEdit, handleEdit, loading }) => {
             />
           ) : (
             <>
+              <Form.Item name="firstName" label="First Name">
+                <Input />
+              </Form.Item>
+              <Form.Item name="lastName" label="Last Name">
+                <Input />
+              </Form.Item>
               <Form.Item name="password" label="password">
                 <Input />
               </Form.Item>
