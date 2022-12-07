@@ -1,22 +1,25 @@
 import {
   UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  BarChartOutlined,
   CloudOutlined,
-  AppstoreOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 export const categories = [
   {
     key: 1,
-    icon: <UserOutlined />,
+    icon: <CloudOutlined />,
     label: "HOME",
     path: "/home",
   },
   {
     key: 2,
-    icon: <VideoCameraOutlined />,
+    icon: <UserOutlined />,
     label: "USER",
     path: "/user",
+  },
+  {
+    key: 3,
+    icon: <SettingOutlined />,
+    label: "SETTINGS",
+    path: "/settings",
   },
 ];

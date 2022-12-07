@@ -1,5 +1,6 @@
 import axios from "../../../axios";
 import { useCallback, useState, useEffect } from "react";
+
 export const useUsers = () => {
   const [loading, setLoading] = useState(false);
   const [Data, setData] = useState([]);

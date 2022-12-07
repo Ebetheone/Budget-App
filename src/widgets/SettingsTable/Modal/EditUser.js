@@ -36,14 +36,24 @@ const EditUser = ({ setHandleEdit, handleEdit, loading }) => {
               width={5}
             />
           ) : (
-            <>
+            <div>
               <Form.Item name="firstName" label="First Name">
                 <Input />
               </Form.Item>
               <Form.Item name="lastName" label="Last Name">
                 <Input />
               </Form.Item>
-              <Form.Item name="password" label="password">
+              <Form.Item
+                name="password"
+                label="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please use uppercase and lowercase with digits!",
+                    pattern: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                  },
+                ]}
+              >
                 <Input />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
@@ -51,7 +61,7 @@ const EditUser = ({ setHandleEdit, handleEdit, loading }) => {
                   Submit
                 </Button>
               </Form.Item>
-            </>
+            </div>
           )}
         </Form>
       </Modal>

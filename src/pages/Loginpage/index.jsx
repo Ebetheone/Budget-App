@@ -64,7 +64,9 @@ const Login = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please input your password!",
+                      message:
+                        "Please use uppercase and lowercase with digits!",
+                      pattern: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
                     },
                   ]}
                 >

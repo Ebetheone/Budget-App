@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Homepage from "../Homepage";
 import Userpage from "../Userpage";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "../../Sidebar";
 import "./style.scss";
 function PrivateRoute() {
   if (!localStorage.getItem("token")) {

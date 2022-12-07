@@ -1,8 +1,11 @@
 import React from "react";
 import { Modal, Button, Form, Input } from "antd";
+
 import "antd/dist/antd.css";
-import { useEditUser } from "./useEditUser";
+
+import { useEditUser } from "../../SettingsTable/Modal/useEditUser";
 import { ScaleLoader } from "react-spinners";
+
 const layout = {
   labelCol: {
     span: 8,
@@ -30,8 +33,18 @@ const AddUser = ({ setVisible, visible, loading, id }) => {
               width={5}
             />
           ) : (
-            <>
-              <Form.Item name="email" label="Email">
+            <div>
+              <Form.Item
+                name="email"
+                label="Email"
+                rules={[
+                  {
+                    type: "email",
+                    required: true,
+                    message: "Please input your email!",
+                  },
+                ]}
+              >
                 <Input />
               </Form.Item>
               <Form.Item name="firstName" label="First Name">
@@ -40,7 +53,18 @@ const AddUser = ({ setVisible, visible, loading, id }) => {
               <Form.Item name="lastName" label="Last Name">
                 <Input />
               </Form.Item>
-              <Form.Item name="password" label="Password" type="password">
+              <Form.Item
+                name="password"
+                label="Password"
+                type="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please use uppercase and lowercase with digits!",
+                    pattern: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                  },
+                ]}
+              >
                 <Input.Password />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
@@ -52,7 +76,7 @@ const AddUser = ({ setVisible, visible, loading, id }) => {
                   Submit
                 </Button>
               </Form.Item>
-            </>
+            </div>
           )}
         </Form>
       </Modal>

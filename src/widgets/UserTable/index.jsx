@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import "./style.scss";
 import { Space, Table, Modal, Button } from "antd";
-import "antd/dist/antd.css";
-import AddUser from "./Modal/AddUser";
-import EditUser from "./Modal/EditUser";
-import { useEditUser } from "./Modal/useEditUser";
-import { useUsers } from "./Modal/useUsers";
 import { Navigate } from "react-router-dom";
+
+import "./style.scss";
+import "antd/dist/antd.css";
+
+import AddUser from "./Modal/AddUser";
+import EditUser from "../SettingsTable/Modal/EditUser";
+import { useEditUser } from "../SettingsTable/Modal/useEditUser";
+import { useUsers } from "./Modal/useUsers";
+
 const { Column } = Table;
 const { confirm } = Modal;
 

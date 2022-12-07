@@ -1,8 +1,8 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import React from "react";
 import { AppstoreOutlined } from "@ant-design/icons";
-import { categories } from "../../utils/menu";
+import { categories } from "../utils/menu";
 import "./style.scss";
 
 const { Sider } = Layout;
@@ -25,10 +25,13 @@ const Sidebar = () => {
             left: "0",
             top: "0",
             paddingTop: "50px",
-            gap: "10px",
+            gap: "20px",
             alignItems: "center",
           }}
         >
+          <Link to={"/home"}>
+            <img src="/logo.png" alt="logo" className="logo" />
+          </Link>
           {categories.map((dat) => (
             <Menu.Item eventKey={dat.key} key={dat.key} icon={dat.icon}>
               <Link to={dat.path}>{dat.label}</Link>

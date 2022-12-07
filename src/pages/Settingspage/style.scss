@@ -1,0 +1,15 @@
+.MainContainer {
+  width: 100%;
+  .border {
+    background-color: white;
+    margin-left: 350px;
+    margin-right: 50px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    .widgets {
+      display: flex;
+      padding: 40px;
+      gap: 20px;
+    }
+  }
+}
