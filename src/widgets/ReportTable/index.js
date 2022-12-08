@@ -46,7 +46,7 @@ const ReportTable = () => {
       },
     ],
   };
-  return <Pie {...config} />;
+  return <div>{/*<Pie {...config} />*/}</div>;
 };
 
 export default ReportTable;

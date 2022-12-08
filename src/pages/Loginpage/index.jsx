@@ -23,66 +23,73 @@ const Login = () => {
               width={5}
             />
           ) : (
-            <div className="rounded">
-              <p className="title">Register</p>
-              <Form
-                name="basic"
-                labelCol={{
-                  span: 8,
-                }}
-                wrapperCol={{
-                  span: 16,
-                }}
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={register}
-                autoComplete="off"
-              >
-                <Form.Item label="First Name" name="firstName">
-                  <Input />
-                </Form.Item>
-                <Form.Item label="Last Name" name="lastName">
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  name="email"
-                  label="Email"
-                  rules={[
-                    {
-                      type: "email",
-                      required: true,
-                      message: "Please input your email!",
-                    },
-                  ]}
-                >
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  label="Password"
-                  name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message:
-                        "Please use uppercase and lowercase with digits!",
-                      pattern: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-                    },
-                  ]}
-                >
-                  <Input.Password />
-                </Form.Item>
-                <Form.Item
+            <div className="grid">
+              <img
+                src="../../../public/logo.png"
+                alt="logo"
+                className="logoc"
+              />
+              <div className="rounded">
+                <p className="title">Register</p>
+                <Form
+                  name="basic"
+                  labelCol={{
+                    span: 8,
+                  }}
                   wrapperCol={{
-                    offset: 8,
                     span: 16,
                   }}
+                  initialValues={{
+                    remember: true,
+                  }}
+                  onFinish={register}
+                  autoComplete="off"
                 >
-                  <Button type="primary" htmlType="submit">
-                    Submit
-                  </Button>
-                </Form.Item>
-              </Form>
+                  <Form.Item label="First Name" name="firstName">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item label="Last Name" name="lastName">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    name="email"
+                    label="Email"
+                    rules={[
+                      {
+                        type: "email",
+                        required: true,
+                        message: "Please input your email!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="Password"
+                    name="password"
+                    rules={[
+                      {
+                        required: true,
+                        message:
+                          "Please use uppercase and lowercase with digits!",
+                        pattern: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                      },
+                    ]}
+                  >
+                    <Input.Password />
+                  </Form.Item>
+                  <Form.Item
+                    wrapperCol={{
+                      offset: 8,
+                      span: 16,
+                    }}
+                  >
+                    <Button type="primary" htmlType="submit">
+                      Submit
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </div>
             </div>
           )}
         </div>
