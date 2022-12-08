@@ -28,7 +28,7 @@ const Login = () => {
                 src="../../../public/logo.png"
                 alt="logo"
                 className="logoc"
-              />
+              /> {/*ene img tag ajillahgui garj irehgu bn*/}
               <div className="rounded">
                 <p className="title">Register</p>
                 <Form
