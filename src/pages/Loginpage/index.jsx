@@ -24,11 +24,7 @@ const Login = () => {
             />
           ) : (
             <div className="grid">
-              <img
-                src="../../../public/logo.png"
-                alt="logo"
-                className="logoc"
-              />
+              <img src="/logo.png" alt="logo" className="logoc" />
               <div className="rounded">
                 <p className="title">Register</p>
                 <Form
