@@ -12,14 +12,13 @@
     align-items: center;
     justify-content: center;
     .logoc {
-      width: 50%;
+      width: 100%;
       height: 100vh;
       object-fit: cover;
     }
     .rounded {
-      width: 50%;
-      height: 500px;
-      border-radius: 15px;
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;

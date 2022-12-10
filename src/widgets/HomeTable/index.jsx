@@ -1,23 +1,40 @@
 import React, { useState } from "react";
-import { Space, Table, Modal, Button } from "antd";
+import { Table, Button } from "antd";
 
 import "./style.scss";
 import "antd/dist/antd.css";
 
-const TableActions = () => {
-  const [data, setData] = useState([]);
+import OrlogoNemeh from "./Modal/income";
+import ZarlagaNemeh from "./Modal/out";
 
-  const { Column } = Table;
+import { useBudget } from "./Modal/useBudget";
+
+const { Column } = Table;
+
+const TableActions = () => {
+  const { data, loading } = useBudget();
+  const [orlogo, setOrlogo] = useState(false);
+  const [zarlaga, setZarlaga] = useState(false);
 
   return (
     <div>
+      <OrlogoNemeh visible={orlogo} setVisible={setOrlogo} loading={loading} />
+      <ZarlagaNemeh
+        visible={zarlaga}
+        setVisible={setZarlaga}
+        loading={loading}
+      />
       <div className="Border">
         <div className="flex">
           <div className="title">Бүгд</div>
         </div>
         <div className="Table">
-          <Button>Орлого нэмэх</Button>
-          <Button>Зарлага нэмэх</Button>
+          <Button type="primary" onClick={() => setOrlogo(true)}>
+            Орлого нэмэх
+          </Button>
+          <Button type="primary" onClick={() => setZarlaga(true)}>
+            Зарлага нэмэх
+          </Button>
           <Table dataSource={data}>
             <Column title="Орлого" dataIndex="orlogo" key="orlogo" />
             <Column title="Зарлага" dataIndex="zarlaga" key="zarlaga" />

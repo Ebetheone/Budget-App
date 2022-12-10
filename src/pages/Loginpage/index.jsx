@@ -3,6 +3,7 @@ import { Button, Form, Input, Space } from "antd";
 import { ScaleLoader } from "react-spinners";
 
 import { useLogin } from "./useLogin";
+import { UserOutlined, LockOutlined, MehOutlined } from "@ant-design/icons";
 
 import "./style.scss";
 import "antd/dist/antd.css";
@@ -26,7 +27,7 @@ const Login = () => {
             <div className="grid">
               <img src="/logo.png" alt="logo" className="logoc" />
               <div className="rounded">
-                <p className="title">Register</p>
+                <p className="title">Бүртгүүлэх</p>
                 <Form
                   name="basic"
                   labelCol={{
@@ -41,38 +42,65 @@ const Login = () => {
                   onFinish={register}
                   autoComplete="off"
                 >
-                  <Form.Item label="First Name" name="firstName">
-                    <Input />
+                  <Form.Item
+                    name="firstName"
+                    style={{ width: 500, marginLeft: 160 }}
+                  >
+                    <Input
+                      size="large"
+                      placeholder="Нэр"
+                      prefix={<MehOutlined />}
+                      name="firstname"
+                    />
                   </Form.Item>
-                  <Form.Item label="Last Name" name="lastName">
-                    <Input />
+                  <Form.Item
+                    name="lastName"
+                    style={{ width: 500, marginLeft: 160 }}
+                  >
+                    <Input
+                      size="large"
+                      placeholder="Овог"
+                      prefix={<MehOutlined />}
+                      name="lastName"
+                    />
                   </Form.Item>
                   <Form.Item
                     name="email"
-                    label="Email"
+                    style={{ width: 500, marginLeft: 160 }}
                     rules={[
                       {
-                        type: "email",
                         required: true,
-                        message: "Please input your email!",
+                        message: "Имэйлээ оруулна уу",
                       },
+                      { type: "email", message: "Зөв имэйл оруулна уу" },
                     ]}
                   >
-                    <Input />
+                    <Input
+                      size="large"
+                      placeholder="И-мэйл"
+                      prefix={<UserOutlined />}
+                      name="email"
+                    />
                   </Form.Item>
                   <Form.Item
-                    label="Password"
                     name="password"
+                    style={{ width: 500, marginLeft: 160 }}
                     rules={[
                       {
                         required: true,
                         message:
-                          "Please use uppercase and lowercase with digits!",
+                          "Нууц үгэнд том үсэг, жижиг үсэг, тоо орсон байна.",
                         pattern: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
                       },
                     ]}
                   >
-                    <Input.Password />
+                    <Input.Password
+                      size="large"
+                      placeholder="Нууц үг"
+                      prefix={<LockOutlined />}
+                      type="password"
+                      name="password"
+                    />
                   </Form.Item>
                   <Form.Item
                     wrapperCol={{
@@ -80,7 +108,11 @@ const Login = () => {
                       span: 16,
                     }}
                   >
-                    <Button type="primary" htmlType="submit">
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      style={{ width: 150, marginLeft: 30 }}
+                    >
                       Submit
                     </Button>
                   </Form.Item>
@@ -99,67 +131,87 @@ const Login = () => {
               width={5}
             />
           ) : (
-            <div className="rounded">
-              <p className="title">Login</p>
-              <Form
-                name="basic"
-                labelCol={{
-                  span: 8,
-                }}
-                wrapperCol={{
-                  span: 16,
-                }}
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={login}
-                autoComplete="off"
-              >
-                <Form.Item
-                  name="email"
-                  label="Email"
-                  rules={[
-                    {
-                      type: "email",
-                      required: true,
-                      message: "Please input your email!",
-                    },
-                  ]}
-                >
-                  <Input />
-                </Form.Item>
-                <Form.Item
-                  label="Password"
-                  name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your password!",
-                    },
-                  ]}
-                >
-                  <Input.Password />
-                </Form.Item>
-                <Form.Item
+            <div className="grid">
+              <img src="/logo.png" alt="logo" className="logoc" />
+              <div className="rounded">
+                <p className="title">Нэвтрэх</p>
+                <Form
+                  name="basic"
+                  labelCol={{
+                    span: 8,
+                  }}
                   wrapperCol={{
-                    offset: 8,
                     span: 16,
                   }}
+                  initialValues={{
+                    remember: true,
+                  }}
+                  onFinish={login}
+                  autoComplete="off"
                 >
-                  <Space>
-                    <Button type="primary" htmlType="submit">
-                      Log In
-                    </Button>
-                    <Button
-                      type="primary"
-                      htmlType="button"
-                      onClick={() => setChange(true)}
-                    >
-                      Register
-                    </Button>
-                  </Space>
-                </Form.Item>
-              </Form>
+                  <Form.Item
+                    name="email"
+                    style={{ width: 500, marginLeft: 160 }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Имэйлээ оруулна уу",
+                      },
+                      { type: "email", message: "Зөв имэйл оруулна уу" },
+                    ]}
+                  >
+                    <Input
+                      size="large"
+                      placeholder="И-мэйл"
+                      prefix={<UserOutlined />}
+                      name="email"
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    name="password"
+                    style={{ width: 500, marginLeft: 160 }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Нууц үгээ хийнэ үү.",
+                      },
+                    ]}
+                  >
+                    <Input.Password
+                      size="large"
+                      placeholder="Нууц үг"
+                      prefix={<LockOutlined />}
+                      type="password"
+                      name="password"
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    wrapperCol={{
+                      offset: 8,
+                      span: 16,
+                    }}
+                    style={{ width: 520 }}
+                  >
+                    <Space>
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        style={{ width: 150 }}
+                      >
+                        Нэвтрэх
+                      </Button>
+                      <Button
+                        type="primary"
+                        style={{ width: 150 }}
+                        htmlType="button"
+                        onClick={() => setChange(true)}
+                      >
+                        Бүртгүүлэх
+                      </Button>
+                    </Space>
+                  </Form.Item>
+                </Form>
+              </div>
             </div>
           )}
         </div>
