@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Pie } from "@ant-design/plots";
+import { useBudget } from "./Modal/useBudget";
 
 const ReportTable = () => {
-  const data = [
-    {
-      sex: "男",
-      sold: 0.45,
-    },
-    {
-      sex: "女",
-      sold: 0.55,
-    },
-  ];
+  const { data, loading } = useBudget();
+
   const config = {
     appendPadding: 10,
     data,

@@ -11,7 +11,7 @@ export const useEditBudget = () => {
     }
     setLoading(true);
     axios
-      .post("/budget/addOrlogo", {
+      .post("/addOrlogo", {
         orlogo: values.orlogo,
       })
       .then(({ data }) => {
@@ -35,7 +35,7 @@ export const useEditBudget = () => {
     }
     setLoading(true);
     axios
-      .post("/budget/addZarlaga", {
+      .post("/addZarlaga", {
         zarlaga: values.zarlaga,
       })
       .then(({ data }) => {
@@ -52,10 +52,10 @@ export const useEditBudget = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const Delete = useCallback((id) => {
+  const DeleteOrlogo = useCallback((id) => {
     axios
-      .post("/budget/delete", {
-        budgetId: id,
+      .post("/deleteOrlogo", {
+        orlogoId: id,
       })
       .then(({ data }) => {
         if (data.success) {
@@ -71,5 +71,24 @@ export const useEditBudget = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  return { addOrlogo, addZarlaga, Delete, loading };
+  const DeleteZarlaga = useCallback((id) => {
+    axios
+      .post("/deleteZarlaga", {
+        zarlagaId: id,
+      })
+      .then(({ data }) => {
+        if (data.success) {
+          console.log(data.success);
+        } else {
+          alert(data.result);
+        }
+      })
+      .catch((err) => {
+        alert(err.message);
+        setLoading(false);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  return { addOrlogo, addZarlaga, DeleteOrlogo, DeleteZarlaga, loading };
 };
