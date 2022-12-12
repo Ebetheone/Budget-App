@@ -29,12 +29,14 @@ const TableActions = () => {
           <div className="title">Бүгд</div>
         </div>
         <div className="Table">
-          <Button type="primary" onClick={() => setOrlogo(true)}>
-            Орлого нэмэх
-          </Button>
-          <Button type="primary" onClick={() => setZarlaga(true)}>
-            Зарлага нэмэх
-          </Button>
+          <div className="buttons">
+            <Button type="primary" onClick={() => setOrlogo(true)}>
+              Орлого нэмэх
+            </Button>
+            <Button type="primary" onClick={() => setZarlaga(true)}>
+              Зарлага нэмэх
+            </Button>
+          </div>
           <Table dataSource={data}>
             <Column title="Орлого" dataIndex="orlogo" key="orlogo" />
             <Column title="Зарлага" dataIndex="zarlaga" key="zarlaga" />

@@ -19,7 +19,7 @@ const OrlogoNemeh = ({ setVisible, visible, loading, id }) => {
   return (
     <div>
       <Modal
-        title="Basic Modal"
+        title="Орлого нэмэх"
         visible={visible}
         onCancel={() => setVisible(false)}
         footer={null}

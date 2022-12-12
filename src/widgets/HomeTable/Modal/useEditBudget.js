@@ -11,7 +11,7 @@ export const useEditBudget = () => {
     }
     setLoading(true);
     axios
-      .post("/addOrlogo", {
+      .post("/orlogo/addOrlogo", {
         orlogo: values.orlogo,
       })
       .then(({ data }) => {
@@ -35,7 +35,7 @@ export const useEditBudget = () => {
     }
     setLoading(true);
     axios
-      .post("/addZarlaga", {
+      .post("/zarlaga/addZarlaga", {
         zarlaga: values.zarlaga,
       })
       .then(({ data }) => {
@@ -54,7 +54,7 @@ export const useEditBudget = () => {
 
   const DeleteOrlogo = useCallback((id) => {
     axios
-      .post("/deleteOrlogo", {
+      .post("/orlogo/deleteOrlogo", {
         orlogoId: id,
       })
       .then(({ data }) => {
@@ -73,7 +73,7 @@ export const useEditBudget = () => {
 
   const DeleteZarlaga = useCallback((id) => {
     axios
-      .post("/deleteZarlaga", {
+      .post("/zarlaga/deleteZarlaga", {
         zarlagaId: id,
       })
       .then(({ data }) => {

@@ -8,7 +8,7 @@ export const useBudget = () => {
   const getOrlogo = useCallback(() => {
     setLoading(true);
     axios
-      .get("/getOrlogo")
+      .get("/orlogo/getOrlogo")
       .then(({ data }) => {
         if (!data.success) {
           throw new Error({ message: data.result });
@@ -28,7 +28,7 @@ export const useBudget = () => {
   const getZarlaga = useCallback(() => {
     setLoading(true);
     axios
-      .get("/getZarlaga")
+      .get("/zarlaga/getZarlaga")
       .then(({ data }) => {
         if (!data.success) {
           throw new Error({ message: data.result });

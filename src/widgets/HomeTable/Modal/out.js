@@ -19,7 +19,7 @@ const ZarlagaNemeh = ({ setVisible, visible, loading, id }) => {
   return (
     <div>
       <Modal
-        title="Basic Modal"
+        title="Зарлага нэмэх"
         visible={visible}
         onCancel={() => setVisible(false)}
         footer={null}
@@ -34,7 +34,7 @@ const ZarlagaNemeh = ({ setVisible, visible, loading, id }) => {
             />
           ) : (
             <div>
-              <Form.Item name="orlogo" label="Зарлага">
+              <Form.Item name="zarlaga" label="Зарлага">
                 <Input />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
