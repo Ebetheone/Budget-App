@@ -7,22 +7,25 @@ import "antd/dist/antd.css";
 import OrlogoNemeh from "./Modal/income";
 import ZarlagaNemeh from "./Modal/out";
 
-import { useBudget } from "./Modal/useBudget";
+import { useOrlogo } from "./Modal/useOrlogo";
+import { useZarlaga } from "./Modal/useZarlaga";
 
 const { Column } = Table;
 
 const TableActions = () => {
-  const { data, loading } = useBudget();
+  const { dataO, loadingO } = useOrlogo();
+  const { dataZ, loadingZ } = useZarlaga();
+
   const [orlogo, setOrlogo] = useState(false);
   const [zarlaga, setZarlaga] = useState(false);
 
   return (
     <div>
-      <OrlogoNemeh visible={orlogo} setVisible={setOrlogo} loading={loading} />
+      <OrlogoNemeh visible={orlogo} setVisible={setOrlogo} loading={loadingO} />
       <ZarlagaNemeh
         visible={zarlaga}
         setVisible={setZarlaga}
-        loading={loading}
+        loading={loadingZ}
       />
       <div className="Border">
         <div className="flex">
@@ -37,8 +40,10 @@ const TableActions = () => {
               Зарлага нэмэх
             </Button>
           </div>
-          <Table dataSource={data}>
+          <Table dataSource={dataO}>
             <Column title="Орлого" dataIndex="orlogo" key="orlogo" />
+          </Table>
+          <Table dataSource={dataZ}>
             <Column title="Зарлага" dataIndex="zarlaga" key="zarlaga" />
           </Table>
         </div>

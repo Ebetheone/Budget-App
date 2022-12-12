@@ -1,9 +1,12 @@
 import React from "react";
 import { Pie } from "@ant-design/plots";
-import { useBudget } from "./Modal/useBudget";
+
+import { useOrlogo } from "./Modal/useOrlogo";
+import { useZarlaga } from "./Modal/useZarlaga";
 
 const ReportTable = () => {
-  const { data, loading } = useBudget();
+  const { dataO, loadingO } = useOrlogo();
+  const { dataZ, loadingZ } = useZarlaga();
 
   const config = {
     appendPadding: 10,
