@@ -6,6 +6,8 @@ import "./style.scss";
 import "antd/dist/antd.css";
 
 import EditUser from "./Modal/EditUser";
+import ResetUser from "./Modal/ResetUser";
+
 import { useEditUser } from "./Modal/useEditUser";
 import { useUsers } from "../UserTable/Modal/useUsers";
 
@@ -16,18 +18,18 @@ const SettingsTable = () => {
   const { data, loading } = useUsers();
   const { DeleteUser } = useEditUser();
 
-  const [reset, setReset] = useState();
+  const [handleReset, setHandleReset] = useState();
   const [handleEdit, setHandleEdit] = useState();
 
   const showDeleteConfirm = (id) => {
     confirm({
-      title: "Are you sure delete this task?",
+      title: "Хаяг устгахдаа итгэлтэй байна уу?",
       okText: "Yes",
       okType: "danger",
       cancelText: "No",
       onOk() {
         DeleteUser(id);
-        <Navigate to="/" />;
+        // render
       },
       onCancel() {
         console.log("Cancel");
@@ -36,6 +38,11 @@ const SettingsTable = () => {
   };
   return (
     <div>
+      <ResetUser
+        handleReset={handleReset}
+        setHandleReset={setHandleReset}
+        loading={loading}
+      />
       <EditUser
         handleEdit={handleEdit}
         setHandleEdit={setHandleEdit}
@@ -47,15 +54,17 @@ const SettingsTable = () => {
         </div>
         <div className="UserTable">
           <Table dataSource={data}>
-            <Column title="Email" dataIndex="email" key="Email" />
+            <Column title="И-мэйл" dataIndex="email" key="Email" />
             <Column
-              title="Action"
+              title="Үйлдэл"
               key="action"
               render={(_, record) => (
                 <Space size="middle">
-                  <a onClick={() => setHandleEdit(record)}>Edit</a>
-                  <a onClick={() => showDeleteConfirm(record._id)}>Delete</a>
-                  <a onClick={() => setReset(record)}>Reset Password</a>
+                  <a onClick={() => setHandleEdit(record)}>Мэдээлэл засах</a>
+                  <a onClick={() => setHandleReset(record)}>Нууц үг солих</a>
+                  <a onClick={() => showDeleteConfirm(record._id)}>
+                    Хаяг устгах
+                  </a>
                 </Space>
               )}
             />

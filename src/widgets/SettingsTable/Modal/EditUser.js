@@ -16,7 +16,7 @@ const EditUser = ({ setHandleEdit, handleEdit, loading }) => {
   return (
     <div>
       <Modal
-        title="Basic Modal"
+        title="Мэдээллээ засах"
         visible={!!handleEdit}
         onCancel={() => setHandleEdit(undefined)}
         footer={null}
@@ -37,23 +37,10 @@ const EditUser = ({ setHandleEdit, handleEdit, loading }) => {
             />
           ) : (
             <div>
-              <Form.Item name="firstName" label="First Name">
+              <Form.Item name="firstName" label="Нэр">
                 <Input />
               </Form.Item>
-              <Form.Item name="lastName" label="Last Name">
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name="password"
-                label="password"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please use uppercase and lowercase with digits!",
-                    pattern: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-                  },
-                ]}
-              >
+              <Form.Item name="lastName" label="Овог">
                 <Input />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>

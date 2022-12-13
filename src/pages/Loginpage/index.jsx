@@ -70,9 +70,9 @@ const Login = () => {
                     rules={[
                       {
                         required: true,
-                        message: "Имэйлээ оруулна уу",
+                        type: "email",
+                        message: "Зөв имэйл оруулна уу",
                       },
-                      { type: "email", message: "Зөв имэйл оруулна уу" },
                     ]}
                   >
                     <Input
@@ -155,9 +155,9 @@ const Login = () => {
                     rules={[
                       {
                         required: true,
-                        message: "Имэйлээ оруулна уу",
+                        type: "email",
+                        message: "Зөв имэйл оруулна уу",
                       },
-                      { type: "email", message: "Зөв имэйл оруулна уу" },
                     ]}
                   >
                     <Input

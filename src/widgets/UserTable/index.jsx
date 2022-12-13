@@ -19,15 +19,15 @@ const UserTable = () => {
         <div className="flex">
           <div className="title">Хэрэглэгчид</div>
           <Button type="primary" onClick={() => setVisible(true)}>
-            Add User
+            Хэрэглэгч нэмэх
           </Button>
         </div>
-        <div className="UserTable">
+        <div className="Table">
           <Table dataSource={data}>
-            <Column title="Email" dataIndex="email" key="Email" />
+            <Column title="Нэр" dataIndex="firstName" key="FirstName" />
+            <Column title="Овог" dataIndex="lastName" key="LastName" />
+            <Column title="И-мэйл" dataIndex="email" key="Email" />
             <Column title="Id" dataIndex="_id" key="id" />
-            <Column title="First Name" dataIndex="firstName" key="FirstName" />
-            <Column title="Last Name" dataIndex="lastName" key="LastName" />
           </Table>
         </div>
       </div>

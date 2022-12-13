@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Form, Input } from "antd";
+import { Modal, Button, Form, InputNumber } from "antd";
 
 import "antd/dist/antd.css";
 
@@ -14,6 +14,7 @@ const layout = {
     span: 16,
   },
 };
+
 const OrlogoNemeh = ({ setVisible, visible, loading, id }) => {
   const { addOrlogo } = useEditBudget(id);
   return (
@@ -35,7 +36,7 @@ const OrlogoNemeh = ({ setVisible, visible, loading, id }) => {
           ) : (
             <div>
               <Form.Item name="orlogo" label="Орлого">
-                <Input />
+                <InputNumber addonAfter="₮" defaultValue={0} />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                 <Button

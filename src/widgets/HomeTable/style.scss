@@ -24,12 +24,11 @@
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 50px;
-    .buttons {
+    .grid {
       width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
   }
 }

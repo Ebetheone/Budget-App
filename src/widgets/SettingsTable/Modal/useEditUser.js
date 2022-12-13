@@ -49,6 +49,26 @@ export const useEditUser = () => {
         id: values._id,
         firstName: values.firstName,
         lastName: values.lastName,
+      })
+      .then(({ data }) => {
+        if (data.success) {
+          console.log(data.success);
+        } else {
+          alert(data.result);
+        }
+      })
+      .catch((err) => {
+        alert(err.message);
+        setLoading(false);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  const resetUser = useCallback(async (values) => {
+    console.log(values);
+    await axios
+      .post("/user/edit", {
+        id: values._id,
         password: values.password,
       })
       .then(({ data }) => {
@@ -84,5 +104,5 @@ export const useEditUser = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  return { addUser, editUser, DeleteUser };
+  return { addUser, editUser, resetUser, DeleteUser, loading };
 };

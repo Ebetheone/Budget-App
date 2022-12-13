@@ -19,7 +19,7 @@ const AddUser = ({ setVisible, visible, loading, id }) => {
   return (
     <div>
       <Modal
-        title="Basic Modal"
+        title="Шинээр хэрэглэгч нэмэх"
         visible={visible}
         onCancel={() => setVisible(false)}
         footer={null}
@@ -36,31 +36,32 @@ const AddUser = ({ setVisible, visible, loading, id }) => {
             <div>
               <Form.Item
                 name="email"
-                label="Email"
+                label="И-мэйл"
                 rules={[
                   {
-                    type: "email",
                     required: true,
-                    message: "Please input your email!",
+                    type: "email",
+                    message: "Зөв имэйл оруулна уу",
                   },
                 ]}
               >
                 <Input />
               </Form.Item>
-              <Form.Item name="firstName" label="First Name">
+              <Form.Item name="firstName" label="Нэр">
                 <Input />
               </Form.Item>
-              <Form.Item name="lastName" label="Last Name">
+              <Form.Item name="lastName" label="Овог">
                 <Input />
               </Form.Item>
               <Form.Item
                 name="password"
-                label="Password"
+                label="Нууц үг"
                 type="password"
                 rules={[
                   {
                     required: true,
-                    message: "Please use uppercase and lowercase with digits!",
+                    message:
+                      "Нууц үгэнд том үсэг, жижиг үсэг, тоо орсон байна.",
                     pattern: /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
                   },
                 ]}
