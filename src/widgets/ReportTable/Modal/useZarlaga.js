@@ -6,7 +6,6 @@ export const useZarlaga = () => {
   const [Data, setData] = useState([]);
 
   const getZarlaga = useCallback(() => {
-    setLoading(true);
     axios
       .get("/zarlaga/getZarlaga")
       .then(({ data }) => {
@@ -23,7 +22,7 @@ export const useZarlaga = () => {
   });
   useEffect(() => {
     getZarlaga();
-  }, []);
+  }, [Data]);
 
   return {
     dataZ: Data,

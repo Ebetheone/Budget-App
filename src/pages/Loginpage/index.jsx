@@ -152,13 +152,6 @@ const Login = () => {
                   <Form.Item
                     name="email"
                     style={{ width: 500, marginLeft: 160 }}
-                    rules={[
-                      {
-                        required: true,
-                        type: "email",
-                        message: "Зөв имэйл оруулна уу",
-                      },
-                    ]}
                   >
                     <Input
                       size="large"

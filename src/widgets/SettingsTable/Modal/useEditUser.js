@@ -5,19 +5,19 @@ export const useEditUser = () => {
   const [loading, setLoading] = useState(false);
   const addUser = useCallback((values) => {
     if (!values.email) {
-      alert("email oruulna uu");
+      alert("И-мэйлээ оруулна уу.");
       return;
     }
     if (!values.firstName) {
-      alert("neree oruulna uu");
+      alert("Нэрээ оруулна уу.");
       return;
     }
     if (!values.lastName) {
-      alert("ovgoo oruulna uu");
+      alert("Овгоо оруулна уу.");
       return;
     }
     if (!values.password) {
-      alert("password oruulna uu");
+      alert("Нууц үгээ оруулна уу.");
       return;
     }
     setLoading(true);
@@ -43,7 +43,6 @@ export const useEditUser = () => {
   }, []);
 
   const editUser = useCallback(async (values) => {
-    console.log(values);
     await axios
       .post("/user/edit", {
         id: values._id,
@@ -54,7 +53,7 @@ export const useEditUser = () => {
         if (data.success) {
           console.log(data.success);
         } else {
-          alert(data.result);
+          alert(data.message);
         }
       })
       .catch((err) => {
@@ -65,9 +64,8 @@ export const useEditUser = () => {
   }, []);
 
   const resetUser = useCallback(async (values) => {
-    console.log(values);
     await axios
-      .post("/user/edit", {
+      .post("/user/reset", {
         id: values._id,
         password: values.password,
       })
@@ -75,7 +73,7 @@ export const useEditUser = () => {
         if (data.success) {
           console.log(data.success);
         } else {
-          alert(data.result);
+          alert(data.message);
         }
       })
       .catch((err) => {
@@ -94,7 +92,7 @@ export const useEditUser = () => {
         if (data.success) {
           console.log(data.success);
         } else {
-          alert(data.result);
+          alert(data.message);
         }
       })
       .catch((err) => {

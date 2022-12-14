@@ -30,7 +30,6 @@ const TableActions = () => {
       cancelText: "No",
       onOk() {
         DeleteOrlogo(id);
-        // render hiih
       },
       onCancel() {
         console.log("Орлогын мэдээллээ устгах цуцлагдлаа.");
@@ -46,7 +45,6 @@ const TableActions = () => {
       cancelText: "No",
       onOk() {
         DeleteZarlaga(id);
-        // render hiih
       },
       onCancel() {
         console.log("Зарлагын мэдээллээ устгах цуцлагдлаа.");

@@ -42,7 +42,7 @@ export const useEditBudget = () => {
         if (data.success) {
           setLoading(false);
         } else {
-          alert(data.result);
+          alert(data.message);
         }
       })
       .catch((err) => {
@@ -61,7 +61,7 @@ export const useEditBudget = () => {
         if (data.success) {
           console.log(data.success);
         } else {
-          alert(data.result);
+          alert(data.message);
         }
       })
       .catch((err) => {
@@ -80,7 +80,7 @@ export const useEditBudget = () => {
         if (data.success) {
           console.log(data.success);
         } else {
-          alert(data.result);
+          alert(data.message);
         }
       })
       .catch((err) => {

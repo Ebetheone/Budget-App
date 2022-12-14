@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Space, Table, Modal } from "antd";
-import { Navigate } from "react-router-dom";
 
 import "./style.scss";
 import "antd/dist/antd.css";
 
 import EditUser from "./Modal/EditUser";
 import ResetUser from "./Modal/ResetUser";
+import IndexContext from "../../context";
 
 import { useEditUser } from "./Modal/useEditUser";
-import { useUsers } from "../UserTable/Modal/useUsers";
+import { useUsers } from "./Modal/useUsers";
 
 const { Column } = Table;
 const { confirm } = Modal;
@@ -21,6 +21,9 @@ const SettingsTable = () => {
   const [handleReset, setHandleReset] = useState();
   const [handleEdit, setHandleEdit] = useState();
 
+  const ctx = useContext(IndexContext);
+  const haveEmail = ctx.chosenEmail;
+
   const showDeleteConfirm = (id) => {
     confirm({
       title: "Хаяг устгахдаа итгэлтэй байна уу?",
@@ -29,7 +32,6 @@ const SettingsTable = () => {
       cancelText: "No",
       onOk() {
         DeleteUser(id);
-        // render
       },
       onCancel() {
         console.log("Cancel");

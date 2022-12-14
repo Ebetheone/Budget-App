@@ -10,7 +10,7 @@ const ReportTable = () => {
 
   const config = {
     appendPadding: 10,
-    data,
+    dataO,
     angleField: "sold",
     colorField: "sex",
     radius: 0.8,
