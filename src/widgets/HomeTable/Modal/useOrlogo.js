@@ -6,7 +6,6 @@ export const useOrlogo = () => {
   const [Data, setData] = useState([]);
 
   const getOrlogo = useCallback(() => {
-    setLoading(true);
     axios
       .get("/orlogo/getOrlogo")
       .then(({ data }) => {
@@ -23,7 +22,7 @@ export const useOrlogo = () => {
   });
   useEffect(() => {
     getOrlogo();
-  }, []);
+  }, [Data]);
 
   return {
     dataO: Data,

@@ -18,7 +18,7 @@ export const useEditBudget = () => {
         if (data.success) {
           setLoading(false);
         } else {
-          alert(data.result);
+          alert(data.message);
         }
       })
       .catch((err) => {
