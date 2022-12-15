@@ -59,7 +59,7 @@ const OrlogoNemeh = ({ setVisible, visible, loading, id }) => {
                 <InputNumber addonAfter="₮" defaultValue={0} />
               </Form.Item>
               <Form.Item
-                name="utga"
+                name="detail"
                 label="Утга"
                 style={{
                   width: "100%",
@@ -70,7 +70,7 @@ const OrlogoNemeh = ({ setVisible, visible, loading, id }) => {
                 <Input />
               </Form.Item>
               <Form.Item
-                name="calendar"
+                name="date"
                 style={{
                   width: "100%",
                   display: "flex",

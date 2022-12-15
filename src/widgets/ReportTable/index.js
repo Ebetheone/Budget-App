@@ -8,43 +8,61 @@ const ReportTable = () => {
   const { dataO, loadingO } = useOrlogo();
   const { dataZ, loadingZ } = useZarlaga();
 
+  const pieData = [
+    {
+      type: "Нийт орлого",
+      value: dataO.orlogo || 0,
+    },
+    {
+      type: "Нийт зарлага",
+      value: dataZ.zarlaga || 0,
+    },
+  ];
+
   const config = {
     appendPadding: 10,
-    dataO,
-    angleField: "sold",
-    colorField: "sex",
-    radius: 0.8,
-    legend: false,
+    data: pieData,
+    angleField: "value",
+    colorField: "type",
+    radius: 1,
+    innerRadius: 0.64,
+    meta: {
+      value: {
+        formatter: (v) => `${v || 0}`,
+      },
+    },
+    legend: {
+      layout: "vertical",
+      position: "bottom",
+      itemName: true,
+      label: true,
+    },
     label: {
       type: "inner",
       offset: "-50%",
       style: {
-        fill: "#fff",
-        fontSize: 18,
         textAlign: "center",
       },
+      autoRotate: false,
+      content: "{value}",
+      interactions: [
+        {
+          type: "element-selected",
+        },
+        {
+          type: "element-active",
+        },
+        {
+          type: "pie-statistic-active",
+        },
+      ],
     },
-    pieStyle: ({ sex }) => {
-      if (sex === "男") {
-        return {
-          fill: "p(a)https://gw.alipayobjects.com/zos/antfincdn/FioHMFgIld/pie-wenli1.png",
-        };
-      }
-
-      return {
-        fill: "p(a)https://gw.alipayobjects.com/zos/antfincdn/Ye2DqRx%2627/pie-wenli2.png",
-      };
-    },
-    tooltip: false,
-    interactions: [
-      {
-        type: "element-single-selected",
-      },
-    ],
   };
+
   return (
     <div>
-      {/* <Pie {...config} /> */}
+      <h1>Санхүү</h1>
+      <Pie autoFit {...config} />
     </div>
   );
 };

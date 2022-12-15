@@ -13,6 +13,8 @@ export const useEditBudget = () => {
     axios
       .post("/orlogo/addOrlogo", {
         orlogo: values.orlogo,
+        date: values.date,
+        detail: values.detail,
       })
       .then(({ data }) => {
         if (data.success) {
@@ -37,6 +39,8 @@ export const useEditBudget = () => {
     axios
       .post("/zarlaga/addZarlaga", {
         zarlaga: values.zarlaga,
+        date: values.date,
+        detail: values.detail,
       })
       .then(({ data }) => {
         if (data.success) {
