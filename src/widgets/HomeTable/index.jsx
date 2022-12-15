@@ -82,6 +82,8 @@ const TableActions = () => {
             </Button>
             <Table dataSource={dataO}>
               <Column title="Орлого" dataIndex="orlogo" key="orlogo" />
+              <Column title="Өдөр" dataIndex="date" key="date" />
+              <Column title="Утга" dataIndex="detail" key="detail" />
               <Column
                 title="Үйлдэл"
                 key="action"
@@ -94,6 +96,8 @@ const TableActions = () => {
             </Table>
             <Table dataSource={dataZ}>
               <Column title="Зарлага" dataIndex="zarlaga" key="zarlaga" />
+              <Column title="Өдөр" dataIndex="date" key="date" />
+              <Column title="Утга" dataIndex="detail" key="detail" />
               <Column
                 title="Үйлдэл"
                 key="action"
