@@ -8,8 +8,8 @@ export const useLogin = () => {
   const [loading, setLoading] = useState(false);
 
   const ctx = useContext(IndexContext);
-  const HaveEmail = (props) => {
-    ctx.HaveEmail(props);
+  const HaveData = (props) => {
+    ctx.HaveData(props);
   };
 
   const login = useCallback((values) => {
@@ -30,7 +30,7 @@ export const useLogin = () => {
       .then(({ data }) => {
         if (data.success) {
           localStorage.setItem("token", data.result);
-          HaveEmail(data.private.email);
+          HaveData(data.private);
           navigate("/home", { replace: true });
         } else {
           alert(data.result);
@@ -64,7 +64,7 @@ export const useLogin = () => {
       .then(({ data }) => {
         if (data.success) {
           localStorage.setItem("token", data.result);
-          HaveEmail(data.private);
+          HaveData(data.private);
           navigate("/home", { replace: true });
         } else {
           alert(data.result);

@@ -3,19 +3,20 @@ import React, { useState, createContext } from "react";
 const IndexContext = createContext();
 
 const initialState = {
-  email: "",
+  ctxData: [],
 };
 
 export const Context = (props) => {
   const [state, setState] = useState(initialState);
 
-  const HaveEmail = (props) => {
-    setState({ ...state, email: props });
+  const HaveData = (props) => {
+    setState({ ...state, ctxData: props });
   };
-  const chosenEmail = state.email;
+
+  const chosenData = state.ctxData;
 
   return (
-    <IndexContext.Provider value={{ chosenEmail, HaveEmail }}>
+    <IndexContext.Provider value={{ HaveData, chosenData }}>
       {props.children}
     </IndexContext.Provider>
   );

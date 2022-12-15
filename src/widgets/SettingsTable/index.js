@@ -9,7 +9,7 @@ import ResetUser from "./Modal/ResetUser";
 import IndexContext from "../../context";
 
 import { useEditUser } from "./Modal/useEditUser";
-import { useUsers } from "./Modal/useUsers";
+import { useUsers } from "../UserTable/Modal/useUsers";
 
 const { Column } = Table;
 const { confirm } = Modal;
@@ -22,7 +22,9 @@ const SettingsTable = () => {
   const [handleEdit, setHandleEdit] = useState();
 
   const ctx = useContext(IndexContext);
-  const haveEmail = ctx.chosenEmail;
+  const HaveData = ctx.chosenData;
+
+  console.log("data", HaveData); // HaveData 1 hereglegchiin medeelliig aguulj baigaa bolovch holboh uyd rawData error zaaj bn!
 
   const showDeleteConfirm = (id) => {
     confirm({

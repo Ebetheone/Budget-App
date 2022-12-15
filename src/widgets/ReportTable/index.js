@@ -42,7 +42,11 @@ const ReportTable = () => {
       },
     ],
   };
-  return <div>{/*<Pie {...config} />*/}</div>;
+  return (
+    <div>
+      {/* <Pie {...config} /> */}
+    </div>
+  );
 };
 
 export default ReportTable;
