@@ -14,6 +14,7 @@ const layout = {
     span: 16,
   },
 };
+
 const AddUser = ({ setVisible, visible, loading, id }) => {
   const { addUser } = useEditUser(id);
   return (
