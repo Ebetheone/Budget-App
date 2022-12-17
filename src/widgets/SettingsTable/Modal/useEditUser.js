@@ -44,14 +44,14 @@ export const useEditUser = () => {
 
   const editUser = useCallback(async (values) => {
     await axios
-      .post("/user/edit", {
+      .put("/user/edit", {
         id: values._id,
         firstName: values.firstName,
         lastName: values.lastName,
       })
       .then(({ data }) => {
         if (data.success) {
-          console.log(data.success);
+          alert(data.result);
         } else {
           alert(data.message);
         }
@@ -83,7 +83,7 @@ export const useEditUser = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const DeleteUser = useCallback((id) => {
+  const deleteUser = useCallback((id) => {
     axios
       .post("/user/delete", {
         userId: id,
@@ -102,5 +102,5 @@ export const useEditUser = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  return { addUser, editUser, resetUser, DeleteUser, loading };
+  return { addUser, editUser, resetUser, deleteUser, loading };
 };

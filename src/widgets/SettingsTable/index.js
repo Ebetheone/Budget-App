@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Space, Table, Modal } from "antd";
 
 import "./style.scss";
@@ -6,26 +6,22 @@ import "antd/dist/antd.css";
 
 import EditUser from "./Modal/EditUser";
 import ResetUser from "./Modal/ResetUser";
-import IndexContext from "../../context";
 
 import { useEditUser } from "./Modal/useEditUser";
 import { useUsers } from "../UserTable/Modal/useUsers";
-
-const { Column } = Table;
-const { confirm } = Modal;
+import { useUserContext } from "../../context/user.context";
 
 const SettingsTable = () => {
+  const { Column } = Table;
+  const { confirm } = Modal;
   const { data, loading } = useUsers();
-  const { DeleteUser } = useEditUser();
 
+  const { deleteUser } = useEditUser();
   const [handleReset, setHandleReset] = useState();
   const [handleEdit, setHandleEdit] = useState();
-
-  const ctx = useContext(IndexContext);
-  const HaveData = ctx.chosenData;
-
-  console.log("data", HaveData); // HaveData 1 hereglegchiin medeelliig aguulj baigaa bolovch holboh uyd rawData error zaaj bn!
-
+  const { user } = useUserContext();
+  const [userData, setUserData] = useState([user]);
+  console.log(userData);
   const showDeleteConfirm = (id) => {
     confirm({
       title: "Хаяг устгахдаа итгэлтэй байна уу?",
@@ -33,7 +29,7 @@ const SettingsTable = () => {
       okType: "danger",
       cancelText: "No",
       onOk() {
-        DeleteUser(id);
+        deleteUser(id);
       },
       onCancel() {
         console.log("Cancel");
@@ -57,7 +53,7 @@ const SettingsTable = () => {
           <div className="title">Хувийн тохиргоо</div>
         </div>
         <div className="UserTable">
-          <Table dataSource={data}>
+          <Table dataSource={userData}>
             <Column title="И-мэйл" dataIndex="email" key="Email" />
             <Column
               title="Үйлдэл"

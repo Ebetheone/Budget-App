@@ -1,16 +1,15 @@
 import { useCallback, useState, useContext } from "react";
 import axios from "../../axios";
 import { useNavigate } from "react-router-dom";
-import IndexContext from "../../context";
+import IndexContext from "../../context/context";
+import { useUserContext } from "../../context/user.context";
 
 export const useLogin = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [userData, setUser] = useState();
 
-  const ctx = useContext(IndexContext);
-  const HaveData = (props) => {
-    ctx.HaveData(props);
-  };
+  const { setUserData } = useUserContext();
 
   const login = useCallback((values) => {
     if (!values.email) {
@@ -30,7 +29,7 @@ export const useLogin = () => {
       .then(({ data }) => {
         if (data.success) {
           localStorage.setItem("token", data.result);
-          HaveData(data.private);
+          setUserData(data.private);
           navigate("/home", { replace: true });
         } else {
           alert(data.result);
@@ -40,7 +39,9 @@ export const useLogin = () => {
         alert(err.message);
         setLoading(false);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const register = useCallback((values) => {

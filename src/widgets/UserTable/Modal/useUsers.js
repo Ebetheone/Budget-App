@@ -1,5 +1,6 @@
 import axios from "../../../axios";
 import { useCallback, useState, useEffect } from "react";
+import { useUserContext } from "../../../context/user.context";
 
 export const useUsers = () => {
   const [loading, setLoading] = useState(false);
@@ -22,10 +23,11 @@ export const useUsers = () => {
         setLoading(false);
       })
       .finally(() => setLoading(false));
-  });
+  }, []);
   useEffect(() => {
     getUsers();
-  }, [Data]);
+  }, []);
+
   return {
     data: Data,
     getUsers,
