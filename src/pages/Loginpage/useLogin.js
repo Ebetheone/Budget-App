@@ -74,9 +74,14 @@ export const useLogin = () => {
       )
       .then(({ data }) => {
         if (data.success) {
-          localStorage.setItem("token", data.result);
-          HaveData(data.private);
-          navigate("/home", { replace: true });
+          localStorage.clear("token");
+          localStorage.clear("userId");
+
+          const accessToken = data.accessToken;
+          localStorage.setItem("token", accessToken);
+          localStorage.setItem("userId", data.private._id);
+          setUserData(data.private);
+          navigate(from, { replace: true });
         } else {
           alert(data.result);
         }
