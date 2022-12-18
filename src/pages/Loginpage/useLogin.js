@@ -59,12 +59,16 @@ export const useLogin = () => {
     }
     setLoading(true);
     axios
-      .post("/auth/register", {
-        email: values.email,
-        password: values.password,
-        firstName: values.firstName,
-        lastName: values.lastName,
-      })
+      .post(
+        "/auth/register",
+        {
+          email: values.email,
+          password: values.password,
+          firstName: values.firstName,
+          lastName: values.lastName,
+        },
+        { withCredentials: true }
+      )
       .then(({ data }) => {
         if (data.success) {
           const accessToken = data.accessToken;
