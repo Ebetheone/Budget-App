@@ -1,8 +1,9 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
 import axios from "../../../axios";
 
 export const useEditUser = () => {
   const [loading, setLoading] = useState(false);
+
   const addUser = useCallback((values) => {
     if (!values.email) {
       alert("И-мэйлээ оруулна уу.");
@@ -44,7 +45,7 @@ export const useEditUser = () => {
 
   const editUser = useCallback(async (values) => {
     await axios
-      .put("/user/edit", {
+      .post("/user/edit", {
         id: values._id,
         firstName: values.firstName,
         lastName: values.lastName,

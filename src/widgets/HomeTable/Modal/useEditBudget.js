@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
 import axios from "../../../axios";
+import React, { useCallback, useState } from "react";
 import { useUserContext } from "../../../context/user.context";
 
 export const useEditBudget = () => {
@@ -28,6 +28,7 @@ export const useEditBudget = () => {
         }
       })
       .catch((err) => {
+        alert(err.message);
         setLoading(false);
       })
       .finally(() => setLoading(false));
@@ -53,6 +54,7 @@ export const useEditBudget = () => {
         }
       })
       .catch((err) => {
+        alert(err.message);
         setLoading(false);
       })
       .finally(() => setLoading(false));
