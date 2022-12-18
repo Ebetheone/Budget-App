@@ -59,19 +59,19 @@ export const useLogin = () => {
     }
     setLoading(true);
     axios
-      .post(
-        "/auth/register",
-        {
-          email: values.email,
-          password: values.password,
-          firstName: values.firstName,
-          lastName: values.lastName,
-        },
-        { withCredentials: true }
-      )
+      .post("/auth/register", {
+        email: values.email,
+        password: values.password,
+        firstName: values.firstName,
+        lastName: values.lastName,
+      })
       .then(({ data }) => {
         if (data.success) {
+          localStorage.clear("token");
+          localStorage.clear("userId");
+
           const accessToken = data.accessToken;
+
           localStorage.setItem("token", accessToken);
           localStorage.setItem("userId", data.private._id);
           setUserData(data.private);
