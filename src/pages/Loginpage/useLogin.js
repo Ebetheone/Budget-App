@@ -82,7 +82,6 @@ export const useLogin = () => {
       })
       .catch((err) => {
         alert(err.message);
-        console.log("duda");
         setLoading(false);
       })
       .finally(() => setLoading(false));
