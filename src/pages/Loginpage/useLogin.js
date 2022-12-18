@@ -74,9 +74,7 @@ export const useLogin = () => {
       )
       .then(({ data }) => {
         if (data.success) {
-          localStorage.clear("token");
-          localStorage.clear("userId");
-
+          console.log("duda", data);
           const accessToken = data.accessToken;
           localStorage.setItem("token", accessToken);
           localStorage.setItem("userId", data.private._id);
