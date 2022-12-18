@@ -81,11 +81,11 @@ export const useLogin = () => {
           setUserData(data.private);
           navigate(from, { replace: true });
         } else {
-          alert(data.result);
+          console.log(data.result);
         }
       })
       .catch((err) => {
-        console.log(err.message);
+        alert(err.message);
         setLoading(false);
       })
       .finally(() => setLoading(false));
