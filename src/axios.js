@@ -1,9 +1,9 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:4000";
+const BASE_URL = "https://budget-app-backend-esmhxg2wh-ebetheone.vercel.app";
 // axios.defaults.withCredentials = true;
 export default axios.create({
   baseURL: BASE_URL,
-  withCredentials: true,
+  // withCredentials: true,
 });
 export const axiosPrivate = axios.create({
   baseURL: BASE_URL,
