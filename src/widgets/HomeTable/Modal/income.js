@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Modal, Button, Form, InputNumber, Calendar, Input } from "antd";
 
 import "antd/dist/antd.css";
@@ -19,17 +19,30 @@ const onPanelChange = (value, mode) => {
   console.log(value.format("YYYY-MM-DD"), mode);
 };
 
-const OrlogoNemeh = ({ setVisible, visible, loading, id }) => {
-  const { addOrlogo } = useEditBudget(id);
+const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
+  const { addOrlogo } = useEditBudget();
+
+  useEffect(() => {
+    setTableModified((prev) => !prev);
+  }, [visible]);
+
+  const onFinish = (values) => {
+    setVisible(false);
+    setTableModified((prev) => !prev);
+    addOrlogo(values);
+  };
   return (
     <div>
       <Modal
         title="Орлого нэмэх"
         visible={visible}
-        onCancel={() => setVisible(false)}
+        onCancel={() => {
+          setVisible(false);
+          setTableModified((prev) => !prev);
+        }}
         footer={null}
       >
-        <Form {...layout} name="nest-messages" onFinish={addOrlogo}>
+        <Form {...layout} name="nest-messages" onFinish={onFinish}>
           {loading ? (
             <ScaleLoader
               color="#1890FF"
@@ -80,11 +93,7 @@ const OrlogoNemeh = ({ setVisible, visible, loading, id }) => {
                 <Calendar fullscreen={false} onPanelChange={onPanelChange} />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  onClick={() => setVisible(false)}
-                >
+                <Button type="primary" htmlType="submit">
                   Submit
                 </Button>
               </Form.Item>

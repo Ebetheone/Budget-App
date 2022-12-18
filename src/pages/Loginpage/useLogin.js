@@ -1,14 +1,13 @@
-import { useCallback, useState, useContext } from "react";
+import { useCallback, useState } from "react";
 import axios from "../../axios";
-import { useNavigate } from "react-router-dom";
-import IndexContext from "../../context/context";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../context/user.context";
 
 export const useLogin = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [userData, setUser] = useState();
-
+  const location = useLocation();
+  const from = location.state?.from?.pathName || "/home";
   const { setUserData } = useUserContext();
 
   const login = useCallback((values) => {
@@ -28,9 +27,14 @@ export const useLogin = () => {
       })
       .then(({ data }) => {
         if (data.success) {
-          localStorage.setItem("token", data.result);
+          localStorage.clear("token");
+          localStorage.clear("userId");
+
+          const accessToken = data.accessToken;
+          localStorage.setItem("token", accessToken);
+          localStorage.setItem("userId", data.private._id);
           setUserData(data.private);
-          navigate("/home", { replace: true });
+          navigate(from, { replace: true });
         } else {
           alert(data.result);
         }
@@ -56,12 +60,18 @@ export const useLogin = () => {
     setLoading(true);
 
     axios
-      .post("/auth/register", {
-        email: values.email,
-        password: values.password,
-        firstName: values.firstName,
-        lastName: values.lastName,
-      })
+      .post(
+        "/auth/register",
+        {
+          email: values.email,
+          password: values.password,
+          firstName: values.firstName,
+          lastName: values.lastName,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .then(({ data }) => {
         if (data.success) {
           localStorage.setItem("token", data.result);

@@ -5,11 +5,12 @@ import { useUserContext } from "../../../context/user.context";
 export const useUsers = () => {
   const [loading, setLoading] = useState(false);
   const [Data, setData] = useState([]);
+
   const token = localStorage.getItem("token");
 
   const getUsers = useCallback(() => {
     axios
-      .get("/user/getUsers", {
+      .get(`/user/getUsers`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }) => {

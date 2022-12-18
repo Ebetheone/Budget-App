@@ -1,13 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import { AppstoreOutlined } from "@ant-design/icons";
 import { categories } from "../utils/menu";
+import { useUserContext } from "../context/user.context";
 import "./style.scss";
 
 const { Sider } = Layout;
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const { setUserData } = useUserContext();
+  const logout = async () => {
+    setUserData({});
+    localStorage.clear("token");
+    localStorage.clear("userId");
+    window.location.reload();
+    // navigate("/login");
+  };
   let key = categories.length + 1;
   return (
     <Layout>
@@ -37,7 +47,7 @@ const Sidebar = () => {
           ))}
           <div className="bottom">
             <Menu.Item icon={<AppstoreOutlined />} eventKey={key}>
-              <Link to={"/"} onClick={() => localStorage.removeItem("token")}>
+              <Link to={"/"} onClick={logout}>
                 LOG OUT
               </Link>
             </Menu.Item>

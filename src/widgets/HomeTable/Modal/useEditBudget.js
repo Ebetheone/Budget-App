@@ -1,8 +1,12 @@
 import { useCallback, useState } from "react";
 import axios from "../../../axios";
+import { useUserContext } from "../../../context/user.context";
 
 export const useEditBudget = () => {
   const [loading, setLoading] = useState(false);
+
+  const { user } = useUserContext();
+  const userId = user?._id ? user._id : localStorage.getItem("userId");
 
   const addOrlogo = useCallback((values) => {
     if (!values.orlogo) {
@@ -11,7 +15,7 @@ export const useEditBudget = () => {
     }
     setLoading(true);
     axios
-      .post("/orlogo/addOrlogo", {
+      .post(`/orlogo/addOrlogo?userId=${userId}`, {
         orlogo: values.orlogo,
         date: values.date,
         detail: values.detail,
@@ -24,7 +28,6 @@ export const useEditBudget = () => {
         }
       })
       .catch((err) => {
-        console.log(err.message);
         setLoading(false);
       })
       .finally(() => setLoading(false));
@@ -37,7 +40,7 @@ export const useEditBudget = () => {
     }
     setLoading(true);
     axios
-      .post("/zarlaga/addZarlaga", {
+      .post(`/zarlaga/addZarlaga?userId=${userId}`, {
         zarlaga: values.zarlaga,
         date: values.date,
         detail: values.detail,
@@ -50,7 +53,6 @@ export const useEditBudget = () => {
         }
       })
       .catch((err) => {
-        console.log(err.message);
         setLoading(false);
       })
       .finally(() => setLoading(false));
@@ -58,12 +60,10 @@ export const useEditBudget = () => {
 
   const DeleteOrlogo = useCallback((id) => {
     axios
-      .post("/orlogo/deleteOrlogo", {
-        orlogoId: id,
-      })
+      .delete(`/orlogo/deleteOrlogo?id=${id}`)
       .then(({ data }) => {
         if (data.success) {
-          console.log(data.success);
+          console.log(data);
         } else {
           alert(data.message);
         }
@@ -73,16 +73,15 @@ export const useEditBudget = () => {
         setLoading(false);
       })
       .finally(() => setLoading(false));
+    return true;
   }, []);
 
   const DeleteZarlaga = useCallback((id) => {
     axios
-      .post("/zarlaga/deleteZarlaga", {
-        zarlagaId: id,
-      })
+      .delete(`/zarlaga/deleteZarlaga?id=${id}`)
       .then(({ data }) => {
         if (data.success) {
-          console.log(data.success);
+          data.success;
         } else {
           alert(data.message);
         }
@@ -92,7 +91,14 @@ export const useEditBudget = () => {
         setLoading(false);
       })
       .finally(() => setLoading(false));
+    return true;
   }, []);
 
-  return { addOrlogo, addZarlaga, DeleteOrlogo, DeleteZarlaga, loading };
+  return {
+    addOrlogo,
+    addZarlaga,
+    DeleteOrlogo,
+    DeleteZarlaga,
+    loading,
+  };
 };

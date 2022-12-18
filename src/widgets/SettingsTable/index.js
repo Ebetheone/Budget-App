@@ -19,9 +19,11 @@ const SettingsTable = () => {
   const { deleteUser } = useEditUser();
   const [handleReset, setHandleReset] = useState();
   const [handleEdit, setHandleEdit] = useState();
+
   const { user } = useUserContext();
+  console.log(user);
   const [userData, setUserData] = useState([user]);
-  console.log(userData);
+
   const showDeleteConfirm = (id) => {
     confirm({
       title: "Хаяг устгахдаа итгэлтэй байна уу?",

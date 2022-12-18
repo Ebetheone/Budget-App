@@ -7,20 +7,14 @@ import Userpage from "../Userpage";
 import Sidebar from "../../Sidebar";
 import Settings from "../Settingspage";
 import Report from "../ Reportpage";
-
-function PrivateRoute() {
-  if (!localStorage.getItem("token")) {
-    return <Navigate to="/" state={{ from: history.location }} />;
-  }
-  return <Outlet />;
-}
+import RequireAuth from "../../hooks/RequireAuth";
 
 const Allpages = () => {
   return (
     <div className="background">
       <Sidebar />
       <Routes>
-        <Route exact path="" element={<PrivateRoute />}>
+        <Route exact path="/" element={<RequireAuth />}>
           <Route exact path="/home" element={<Homepage />} />
           <Route path="/user" element={<Userpage />} />
           <Route path="/settings" element={<Settings />} />

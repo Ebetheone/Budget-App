@@ -5,7 +5,6 @@ import "./style.scss";
 const Homepage = () => {
   return (
     <div className="MainContainer">
-      <div className="border"></div>
       <HomeTable />
     </div>
   );

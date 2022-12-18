@@ -1,10 +1,10 @@
-import React from "react";
 import { Modal, Button, Form, InputNumber, Calendar, Input } from "antd";
 
 import "antd/dist/antd.css";
 
 import { useEditBudget } from "./useEditBudget";
 import { ScaleLoader } from "react-spinners";
+import { useEffect } from "react";
 
 const layout = {
   labelCol: {
@@ -19,17 +19,37 @@ const onPanelChange = (value, mode) => {
   console.log(value.format("YYYY-MM-DD"), mode);
 };
 
-const ZarlagaNemeh = ({ setVisible, visible, loading, id }) => {
+const ZarlagaNemeh = ({
+  setVisible,
+  visible,
+  loading,
+  id,
+  setTableModified,
+}) => {
   const { addZarlaga } = useEditBudget(id);
+
+  useEffect(() => {
+    setTableModified((prev) => !prev);
+  }, [visible]);
+
+  const onFinish = (values) => {
+    setVisible(false);
+    setTableModified((prev) => !prev);
+    addZarlaga(values);
+  };
+
   return (
     <div>
       <Modal
         title="Зарлага нэмэх"
         visible={visible}
-        onCancel={() => setVisible(false)}
+        onCancel={() => {
+          setVisible(false);
+          setTableModified((prev) => !prev);
+        }}
         footer={null}
       >
-        <Form {...layout} name="nest-messages" onFinish={addZarlaga}>
+        <Form {...layout} name="nest-messages" onFinish={onFinish}>
           {loading ? (
             <ScaleLoader
               color="#1890FF"
@@ -80,11 +100,7 @@ const ZarlagaNemeh = ({ setVisible, visible, loading, id }) => {
                 <Calendar fullscreen={false} onPanelChange={onPanelChange} />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  onClick={() => setVisible(false)}
-                >
+                <Button type="primary" htmlType="submit">
                   Submit
                 </Button>
               </Form.Item>
