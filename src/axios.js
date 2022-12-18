@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://budget-app-backend-esmhxg2wh-ebetheone.vercel.app";
+const BASE_URL = "https://budget-app-backend-three.vercel.app/";
 // axios.defaults.withCredentials = true;
 export default axios.create({
   baseURL: BASE_URL,
