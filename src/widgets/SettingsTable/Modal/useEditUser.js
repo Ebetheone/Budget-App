@@ -52,9 +52,9 @@ export const useEditUser = () => {
       })
       .then(({ data }) => {
         if (data.success) {
-          alert(data.result);
+          console.log(data.success);
         } else {
-          alert(data.message);
+          alert(data.result);
         }
       })
       .catch((err) => {

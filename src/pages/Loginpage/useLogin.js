@@ -70,14 +70,12 @@ export const useLogin = () => {
           localStorage.clear("token");
           localStorage.clear("userId");
 
-          const accessToken = data.accessToken;
-
-          localStorage.setItem("token", accessToken);
+          localStorage.setItem("token", data.result);
           localStorage.setItem("userId", data.private._id);
           setUserData(data.private);
           navigate(from, { replace: true });
         } else {
-          console.log(data.result);
+          alert(data.result);
         }
       })
       .catch((err) => {

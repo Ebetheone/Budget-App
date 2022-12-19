@@ -67,6 +67,7 @@ const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <InputNumber addonAfter="₮" defaultValue={0} />
@@ -78,6 +79,7 @@ const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 <Input />
@@ -88,9 +90,20 @@ const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
                   width: "100%",
                   display: "flex",
                   alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
-                <Calendar fullscreen={false} onPanelChange={onPanelChange} />
+                <Calendar
+                  fullscreen={false}
+                  onPanelChange={onPanelChange}
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                 <Button type="primary" htmlType="submit">
