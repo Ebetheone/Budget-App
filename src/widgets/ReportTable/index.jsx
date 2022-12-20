@@ -8,71 +8,141 @@ import {
   LinearScale,
   BarElement,
   Title,
+  PointElement,
+  LineController,
+  LineElement,
+  TimeScale,
 } from "chart.js";
+import "chartjs-adapter-moment";
+import { useOrlogo } from "../../widgets/HomeTable/Modal/useOrlogo";
+import { useZarlaga } from "../../widgets/HomeTable/Modal/useZarlaga";
 import { Pie, Line } from "react-chartjs-2";
+import { Empty } from "antd";
+import { useState } from "react";
+import { useEffect } from "react";
 
 ChartJS.register(
   ArcElement,
   CategoryScale,
   LinearScale,
+  LineController,
   BarElement,
+  LineElement,
+  PointElement,
+  TimeScale,
   Title,
   Tooltip,
   Legend
 );
 
-export const pieData = {
-  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(255, 206, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-        "rgba(153, 102, 255, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-        "rgba(153, 102, 255, 1)",
-        "rgba(255, 159, 64, 1)",
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
-
-const lineData = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-  datasets: [
-    {
-      label: "First dataset",
-      data: [33, 53, 85, 41, 44, 65],
-      fill: true,
-      backgroundColor: "rgba(75,192,192,0.2)",
-      borderColor: "rgba(75,192,192,1)",
-    },
-    {
-      label: "Second dataset",
-      data: [33, 25, 35, 51, 54, 76],
-      fill: false,
-      borderColor: "#742774",
-    },
-  ],
-};
-
 const ReportTable = () => {
+  const { dataO } = useOrlogo();
+  const { dataZ } = useZarlaga();
+
+  // SUMS
+  const orlogoSum = dataO?.reduce((acc, obj) => {
+    return acc + parseInt(obj.orlogo, 10);
+  }, 0);
+
+  const zarlagaSum = dataZ?.reduce((acc, obj) => {
+    return acc + parseInt(obj.zarlaga, 10);
+  }, 0);
+
+  // DATES
+  const dateOrlogo = dataO.map((item) => {
+    return {
+      x: new Date(item["date"]),
+      y: parseInt(item["orlogo"], 10),
+    };
+  });
+
+  const dateZarlaga = dataZ.map((item) => {
+    return {
+      x: new Date(item["date"]).toDateString(),
+      y: parseInt(item["zarlaga"], 10),
+    };
+  });
+
+  // SORT DATES ASC
+  const sortedOrlogo = dateOrlogo.sort(
+    (objA, objB) => Number(objA.x) - Number(objB.x)
+  );
+  const sortedZarlaga = dateZarlaga.sort(
+    (objA, objB) => Number(objA.x) - Number(objB.x)
+  );
+
+  console.log(sortedZarlaga);
+
+  const lineData = {
+    datasets: [
+      {
+        label: "Orlogo",
+        data: sortedOrlogo,
+        fill: true,
+        backgroundColor: "rgba(75,192,192,0.2)",
+        borderColor: "rgba(75,192,192,1)",
+      },
+      {
+        label: "Zarlaga",
+        data: sortedZarlaga,
+        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+      },
+    ],
+  };
+
+  const pieData = {
+    labels: ["Орлого", "Зарлага"],
+    datasets: [
+      {
+        label: "ENE DEER HUSSNE BICHEREI",
+        data: [orlogoSum, zarlagaSum],
+        borderColor: "#742774",
+        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+      },
+    ],
+  };
+
   return (
     <div className="Border">
-      <div className="flex">
-        <Pie data={pieData} />
-        {/* <Line data={lineData} /> */}
+      <div className="flex justify-center m-0 y-0">
+        <div>
+          {pieData ? (
+            <Pie
+              width={400}
+              height={400}
+              data={pieData}
+              options={{ maintainAspectRatio: false }}
+            />
+          ) : (
+            <Empty />
+          )}
+        </div>
+        <div>
+          <Line
+            data={lineData}
+            width={400}
+            height={400}
+            options={{
+              maintainAspectRatio: false,
+              responsive: true,
+
+              scales: {
+                x: {
+                  type: "time",
+                  time: {
+                    unit: "day",
+                    displayFormats: {
+                      day: "M/D",
+                    },
+                    tooltipFormat: "Y/M/D H:M:S",
+                  },
+                },
+              },
+            }}
+          />
+        </div>
       </div>
     </div>
   );
