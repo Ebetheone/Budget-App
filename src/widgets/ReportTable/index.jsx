@@ -71,13 +71,15 @@ const ReportTable = () => {
     (objA, objB) => Number(objA.x) - Number(objB.x)
   );
 
-  console.log(sortedZarlaga);
+  const dateData = sortedOrlogo.filter(
+    (item) => item.x.getFullYear().toString() === "2022"
+  );
 
   const lineData = {
     datasets: [
       {
         label: "Orlogo",
-        data: sortedOrlogo,
+        data: dateData,
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "rgba(75,192,192,1)",
