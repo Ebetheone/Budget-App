@@ -1,10 +1,22 @@
-import { Modal, Button, Form, InputNumber, Calendar, Input } from "antd";
+import {
+  Modal,
+  Button,
+  Form,
+  InputNumber,
+  Calendar,
+  Input,
+  Select,
+} from "antd";
 
 import "antd/dist/antd.css";
 
 import { useEditBudget } from "./useEditBudget";
 import { ScaleLoader } from "react-spinners";
 import { useEffect } from "react";
+
+const handleChange = (value) => {
+  console.log(`selected ${value}`);
+};
 
 const layout = {
   labelCol: {
@@ -51,12 +63,21 @@ const ZarlagaNemeh = ({
       >
         <Form {...layout} name="nest-messages" onFinish={onFinish}>
           {loading ? (
-            <ScaleLoader
-              color="#1890FF"
-              height={50}
-              speedMultiplier={1.5}
-              width={5}
-            />
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <ScaleLoader
+                color="#1890FF"
+                height={50}
+                speedMultiplier={1.5}
+                width={5}
+              />
+            </div>
           ) : (
             <div
               style={{
@@ -90,6 +111,36 @@ const ZarlagaNemeh = ({
                 }}
               >
                 <Input />
+              </Form.Item>
+              <Form.Item
+                name="type"
+                label="Төрөл"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Select
+                  defaultValue="pay"
+                  style={{ width: 120 }}
+                  onChange={handleChange}
+                  options={[
+                    {
+                      value: "pay",
+                      label: "Төлбөр",
+                    },
+                    {
+                      value: "food",
+                      label: "Хүнс",
+                    },
+                    {
+                      value: "other",
+                      label: "Бусад",
+                    },
+                  ]}
+                />
               </Form.Item>
               <Form.Item
                 name="date"

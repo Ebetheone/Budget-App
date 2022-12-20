@@ -112,6 +112,7 @@ const TableActions = () => {
               <Column title="Орлого" dataIndex="orlogo" key="orlogo" />
               <Column title="Өдөр" dataIndex="date" key="date" />
               <Column title="Утга" dataIndex="detail" key="detail" />
+              <Column title="Төрөл" dataIndex="type" key="type" />
               <Column
                 title="Үйлдэл"
                 key="action"
@@ -131,6 +132,7 @@ const TableActions = () => {
               <Column title="Зарлага" dataIndex="zarlaga" key="zarlaga" />
               <Column title="Өдөр" dataIndex="date" key="date" />
               <Column title="Утга" dataIndex="detail" key="detail" />
+              <Column title="Төрөл" dataIndex="type" key="type" />
               <Column
                 title="Үйлдэл"
                 key="action"

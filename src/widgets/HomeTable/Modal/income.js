@@ -1,10 +1,22 @@
 import React, { useEffect } from "react";
-import { Modal, Button, Form, InputNumber, Calendar, Input } from "antd";
+import {
+  Modal,
+  Button,
+  Form,
+  InputNumber,
+  Calendar,
+  Input,
+  Select,
+} from "antd";
 
 import "antd/dist/antd.css";
 
 import { ScaleLoader } from "react-spinners";
 import { useEditBudget } from "./useEditBudget";
+
+const handleChange = (value) => {
+  console.log(`selected ${value}`);
+};
 
 const layout = {
   labelCol: {
@@ -44,12 +56,21 @@ const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
       >
         <Form {...layout} name="nest-messages" onFinish={onFinish}>
           {loading ? (
-            <ScaleLoader
-              color="#1890FF"
-              height={50}
-              speedMultiplier={1.5}
-              width={5}
-            />
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <ScaleLoader
+                color="#1890FF"
+                height={50}
+                speedMultiplier={1.5}
+                width={5}
+              />
+            </div>
           ) : (
             <div
               style={{
@@ -83,6 +104,36 @@ const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
                 }}
               >
                 <Input />
+              </Form.Item>
+              <Form.Item
+                name="type"
+                label="Төрөл"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Select
+                  defaultValue="tsalin"
+                  style={{ width: 120 }}
+                  onChange={handleChange}
+                  options={[
+                    {
+                      value: "tsalin",
+                      label: "Цалин",
+                    },
+                    {
+                      value: "hustle",
+                      label: "Hustle",
+                    },
+                    {
+                      value: "share",
+                      label: "Хувьцаа",
+                    },
+                  ]}
+                />
               </Form.Item>
               <Form.Item
                 name="date"

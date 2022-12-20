@@ -36,7 +36,7 @@ export const useLogin = () => {
           setUserData(data.private);
           navigate(from, { replace: true });
         } else {
-          alert(data.result);
+          alert(data.message);
         }
       })
       .catch((err) => {
@@ -70,12 +70,12 @@ export const useLogin = () => {
           localStorage.clear("token");
           localStorage.clear("userId");
 
-          localStorage.setItem("token", data.result);
+          localStorage.setItem("token", data.accessToken);
           localStorage.setItem("userId", data.private._id);
           setUserData(data.private);
           navigate(from, { replace: true });
         } else {
-          alert(data.result);
+          alert(data.message);
         }
       })
       .catch((err) => {
