@@ -19,6 +19,7 @@ export const useEditBudget = () => {
         orlogo: values.orlogo,
         date: values.date,
         detail: values.detail,
+        type: values.type,
       })
       .then(({ data }) => {
         if (data.success) {
@@ -45,6 +46,7 @@ export const useEditBudget = () => {
         zarlaga: values.zarlaga,
         date: values.date,
         detail: values.detail,
+        type: values.type,
       })
       .then(({ data }) => {
         if (data.success) {
