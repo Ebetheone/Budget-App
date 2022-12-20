@@ -44,12 +44,21 @@ const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
       >
         <Form {...layout} name="nest-messages" onFinish={onFinish}>
           {loading ? (
-            <ScaleLoader
-              color="#1890FF"
-              height={50}
-              speedMultiplier={1.5}
-              width={5}
-            />
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <ScaleLoader
+                color="#1890FF"
+                height={50}
+                speedMultiplier={1.5}
+                width={5}
+              />
+            </div>
           ) : (
             <div
               style={{
