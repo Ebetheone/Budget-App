@@ -18,8 +18,6 @@ import { useOrlogo } from "../../widgets/HomeTable/Modal/useOrlogo";
 import { useZarlaga } from "../../widgets/HomeTable/Modal/useZarlaga";
 import { Pie, Line } from "react-chartjs-2";
 import { Empty } from "antd";
-import { useState } from "react";
-import { useEffect } from "react";
 
 ChartJS.register(
   ArcElement,
@@ -71,22 +69,26 @@ const ReportTable = () => {
     (objA, objB) => Number(objA.x) - Number(objB.x)
   );
 
-  const dateData = sortedOrlogo.filter(
+  const dateOrlogoData = sortedOrlogo.filter(
     (item) => item.x.getFullYear().toString() === "2022"
   );
 
+  const dateZarlagaData = sortedZarlaga.filter(
+    (item) => item.x.substring(item.x.length - 4) === "2022"
+  );
+  console.log(dateZarlagaData);
   const lineData = {
     datasets: [
       {
         label: "Orlogo",
-        data: dateData,
+        data: dateOrlogoData,
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "rgba(75,192,192,1)",
       },
       {
         label: "Zarlaga",
-        data: sortedZarlaga,
+        data: dateZarlagaData,
         backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
         borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
       },

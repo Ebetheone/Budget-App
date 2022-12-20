@@ -114,22 +114,23 @@ const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
                   alignItems: "center",
                   justifyContent: "center",
                 }}
+                defaultValue="Цалин"
               >
                 <Select
-                  defaultValue="tsalin"
                   style={{ width: 120 }}
                   onChange={handleChange}
+                  defaultValue="Цалин"
                   options={[
                     {
-                      value: "tsalin",
+                      value: "Цалин",
                       label: "Цалин",
                     },
                     {
-                      value: "hustle",
+                      value: "Hustle",
                       label: "Hustle",
                     },
                     {
-                      value: "share",
+                      value: "Хувьцаа",
                       label: "Хувьцаа",
                     },
                   ]}
@@ -146,7 +147,6 @@ const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
               >
                 <Calendar
                   fullscreen={false}
-                  defaultValue={Date.now()}
                   onPanelChange={onPanelChange}
                   style={{
                     width: "100%",

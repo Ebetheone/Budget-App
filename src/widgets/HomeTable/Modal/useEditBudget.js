@@ -17,7 +17,7 @@ export const useEditBudget = () => {
     axios
       .post(`/orlogo/addOrlogo?userId=${userId}`, {
         orlogo: values.orlogo,
-        date: values.date,
+        date: values.date._d,
         detail: values.detail,
         type: values.type,
       })
@@ -25,7 +25,7 @@ export const useEditBudget = () => {
         if (data.success) {
           setLoading(false);
         } else {
-          alert(data.message);
+          alert(data.result);
         }
       })
       .catch((err) => {
@@ -40,11 +40,10 @@ export const useEditBudget = () => {
       alert("Зарлагаа оруулна уу.");
       return;
     }
-    setLoading(true);
     axios
       .post(`/zarlaga/addZarlaga?userId=${userId}`, {
         zarlaga: values.zarlaga,
-        date: values.date,
+        date: values.date._d,
         detail: values.detail,
         type: values.type,
       })
