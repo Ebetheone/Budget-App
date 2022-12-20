@@ -95,7 +95,7 @@ const ReportTable = () => {
     labels: ["Орлого", "Зарлага"],
     datasets: [
       {
-        label: "ENE DEER HUSSNE BICHEREI",
+        label: `Нийт ${orlogoSum + zarlagaSum}`,
         data: [orlogoSum, zarlagaSum],
         borderColor: "#742774",
         backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
@@ -106,8 +106,8 @@ const ReportTable = () => {
 
   return (
     <div className="Border">
-      <div className="flex justify-center m-0 y-0">
-        <div>
+      <div className="flex">
+        <div className="pie">
           {pieData ? (
             <Pie
               width={400}
@@ -119,7 +119,7 @@ const ReportTable = () => {
             <Empty />
           )}
         </div>
-        <div>
+        <div className="line">
           <Line
             data={lineData}
             width={400}
