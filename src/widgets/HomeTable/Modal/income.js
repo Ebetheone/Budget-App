@@ -95,6 +95,7 @@ const OrlogoNemeh = ({ setVisible, visible, loading, setTableModified }) => {
               >
                 <Calendar
                   fullscreen={false}
+                  defaultValue={Date.now()}
                   onPanelChange={onPanelChange}
                   style={{
                     width: "100%",
