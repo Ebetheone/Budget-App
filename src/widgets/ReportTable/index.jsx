@@ -61,7 +61,6 @@ const ReportTable = () => {
     };
   });
 
-  // SORT DATES ASC
   const sortedOrlogo = dateOrlogo.sort(
     (objA, objB) => Number(objA.x) - Number(objB.x)
   );

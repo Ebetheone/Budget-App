@@ -123,20 +123,20 @@ const ZarlagaNemeh = ({
                 }}
               >
                 <Select
-                  defaultValue="pay"
+                  defaultValue="Төлбөр"
                   style={{ width: 120 }}
                   onChange={handleChange}
                   options={[
                     {
-                      value: "pay",
+                      value: "Төлбөр",
                       label: "Төлбөр",
                     },
                     {
-                      value: "food",
+                      value: "Хүнс",
                       label: "Хүнс",
                     },
                     {
-                      value: "other",
+                      value: "Бусад",
                       label: "Бусад",
                     },
                   ]}
