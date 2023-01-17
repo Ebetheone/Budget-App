@@ -37,7 +37,6 @@ const ReportTable = () => {
   const { dataO } = useOrlogo();
   const { dataZ } = useZarlaga();
 
-  // SUMS
   const orlogoSum = dataO?.reduce((acc, obj) => {
     return acc + parseInt(obj.orlogo, 10);
   }, 0);
@@ -46,7 +45,6 @@ const ReportTable = () => {
     return acc + parseInt(obj.zarlaga, 10);
   }, 0);
 
-  // DATES
   const dateOrlogo = dataO.map((item) => {
     return {
       x: new Date(item["date"]),
@@ -61,33 +59,18 @@ const ReportTable = () => {
     };
   });
 
-  const sortedOrlogo = dateOrlogo.sort(
-    (objA, objB) => Number(objA.x) - Number(objB.x)
-  );
-  const sortedZarlaga = dateZarlaga.sort(
-    (objA, objB) => Number(objA.x) - Number(objB.x)
-  );
-
-  const dateOrlogoData = sortedOrlogo.filter(
-    (item) => item.x.getFullYear().toString() === "2022"
-  );
-
-  const dateZarlagaData = sortedZarlaga.filter(
-    (item) => item.x.substring(item.x.length - 4) === "2022"
-  );
-  console.log(dateZarlagaData);
   const lineData = {
     datasets: [
       {
         label: "Orlogo",
-        data: dateOrlogoData,
+        data: dateOrlogo,
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "rgba(75,192,192,1)",
       },
       {
         label: "Zarlaga",
-        data: dateZarlagaData,
+        data: dateZarlaga,
         backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)"],
         borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
       },
