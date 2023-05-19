@@ -5,6 +5,8 @@ import {
   PaperClipOutlined,
 } from "@ant-design/icons";
 
+// Sidebar menus
+
 export const categories = [
   {
     key: 1,

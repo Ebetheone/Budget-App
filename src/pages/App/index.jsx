@@ -5,6 +5,7 @@ import Allpages from "../Allpages";
 import { UserProvider } from "../../context/user.context";
 
 const App = () => {
+  // contexteer burj ugnu
   return (
     <UserProvider>
       <BrowserRouter>

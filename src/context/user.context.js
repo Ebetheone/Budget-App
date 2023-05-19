@@ -4,6 +4,8 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
 
+  // user hooslono
+
   const setUserData = (user) => {
     if (user !== null) {
       return setUser(user);

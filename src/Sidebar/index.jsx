@@ -16,7 +16,6 @@ const Sidebar = () => {
     localStorage.clear("token");
     localStorage.clear("userId");
     window.location.reload();
-    // navigate("/login");
   };
   let key = categories.length + 1;
   return (
@@ -39,7 +38,7 @@ const Sidebar = () => {
             alignItems: "center",
           }}
         >
-          <div className="logo">Ebetheone</div>
+          <div className="logo">Financial System</div>
           {categories.map((dat) => (
             <Menu.Item eventKey={dat.key} key={dat.key} icon={dat.icon}>
               <Link to={dat.path}>{dat.label}</Link>
